@@ -22,3 +22,17 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 - `git stash clear`: Remove *all* stashes
 - `git stash branch <branchname> [optional stash@{#}]`: Start new branch from stash
 - `git checkout <stash name> -- <filename>`: Grab a single file from a stash
+
+## git tag
+
+- `git tag <tagname>`: Create a tag and use message from last commit
+- `git tag -a <tagname>`: Create an "annotated" tag with your own message, author, date.
+- `git tag`: list tagnames
+- `git tag --points-at <commit>`: list tagnames that point to a commit
+- `git show <tagname>`: Show message & diff for tag
+
+## git branch
+
+- `git branch`: list local branches
+- `git branch -r`: list remote branches
+- `git branch <new-branchname> <commit>`: Create a branch with <commit> at HEAD (useful for dangling commits)
