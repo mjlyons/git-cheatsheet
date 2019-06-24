@@ -4,7 +4,8 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 
 ## Config
 
-- `git config --global core.editor "code --wait"`: Set text editor
+- `git config [--global] core.editor "code --wait"`: Set text editor
+- `git config [--global] rerere.enabled true`: Replay previously seen conflict resolution (helpful for long rebases)
 
 ## git add
 
@@ -36,3 +37,12 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 - `git branch`: list local branches
 - `git branch -r`: list remote branches
 - `git branch <new-branchname> <commit>`: Create a branch with <commit> at HEAD (useful for dangling commits)
+
+## git merge
+
+- `git merge <feature-branch>`: merges <feature-branch> into the current branch
+- `git merge --no-ff <feature-branch>` Disables fast forward (makes merge commit even if no merge conflicts, useful if want to group related changes)
+
+## git log
+
+- `git log --graph --decorate --all --oneline`: draw graph of how branches relate
