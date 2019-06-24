@@ -64,11 +64,34 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 
 - `git diff`: show unsaved changes diff
 - `git diff --staged`: show staged changes diff
-- `git diff A B`: diff of diffs from A..HEAD & B..HEAD
-- `git diff A..B`: show changes bringing A to B
+- `git diff A B`: diff from A to B
+- `git diff A..B`: diff from A&B's common ancestor to B
 - `git diff --merged <branch>`: show branches that have been merged into <branch> (useful for master)
 - `git diff --no-merged <branch>`: show branches *not* merged into <branch>
 
+## git checkout
+
+- `git checkout -- <filename>`: overwrites file changes in working area with staging area version
+- `git checkout <commit> -- <filename>`: copies file at commit to staging area & working area
+
+## git clean
+
+- `git clean -i`: remove untracked file changes, interactively
+- `git clean -i -d`: also remove untracked folder changes
+- `git clean --dry-run`: see what would be removed without removing
+- `git clean --dry-run -f`: remove changes after checking with dry-run
+
+## git reset
+
+- `git reset --soft <commit>`: moves HEAD to <commit> and stages changes to go back
+- `git reset [--mixed] <commit>`: moves HEAD to <commit> and moves chagnges to go back to working area
+- `git reset --hard <commit`: moves HEAD to <commit> and changes to go back disappear (use ORIG_HEAD to get it back)
+- `git reset [commit] -- <file>`: stages change to revert file to state at [commit] or HEAD if not supplied
+- `ORIG_HEAD` pointer to change after doing a reset (handy if need to revert a bad reset)
+
+## git revert
+
+- `git revert <commit>`: creates a commit reverting <commit>
 
 ## Commit references
 
