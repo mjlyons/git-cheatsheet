@@ -46,3 +46,32 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 ## git log
 
 - `git log --graph --decorate --all --oneline`: draw graph of how branches relate
+- `git log --since="yesterday"`
+- `git log --since="2 weeks ago"`
+- `git log --name-status --follow -- <file>`: Shows log history for a file with that works across renames/moves"
+- `git log -grep=<regexp>`: log history matching <regexp>
+- `git log --author=<author>`: log history for <author>
+- `git log --stat`: Summarize changes to each file in log message
+- `git log diff-filter=<F> --stat`: Log diffs with filter (A=Add, D=Delete, M=Modified)
+
+## git show
+
+- `git show [commit]`: log message and diff of [commit], or HEAD if commit omitted
+- `git show --stat`: adds per-file change summary for each file
+- `git show <commit>:<file>`: show diff of single file in commit
+
+## git diff
+
+- `git diff`: show unsaved changes diff
+- `git diff --staged`: show staged changes diff
+- `git diff A B`: diff of diffs from A..HEAD & B..HEAD
+- `git diff A..B`: show changes bringing A to B
+- `git diff --merged <branch>`: show branches that have been merged into <branch> (useful for master)
+- `git diff --no-merged <branch>`: show branches *not* merged into <branch>
+
+
+## Commit references
+
+- `<commit>~[n]`: n-th ancestor of commit (n=1 if omitted, n=2 is parent of parent)
+- `<commit>^[n]`: n-th parent of commit (n=1 if omitted, only useful for merges
+
