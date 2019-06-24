@@ -20,5 +20,5 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 - `git stash apply stash@{#}`: apply a stash
 - `git stash drop <optional stash@{#}>`: Remove a stash
 - `git stash clear`: Remove *all* stashes
-- `git stash branch <optional stash name>`: Start new branch from stash
-- `git checkout <stash name> -- <filename`: Grab a single file from a stash
+- `git stash branch <branchname> [optional stash@{#}]`: Start new branch from stash
+- `git checkout <stash name> -- <filename>`: Grab a single file from a stash
