@@ -233,3 +233,4 @@ Usage:
 
 - `ISSUE_TEMPLATE.md`: default contents when creating an issue
 - `PULL_REQUEST.md`: default contents when sending a PR
+- `CONTRIBUTING.md`: link to this doc in sidebare when creating a PR
