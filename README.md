@@ -58,6 +58,7 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 - `git log --author=<author>`: log history for <author>
 - `git log --stat`: Summarize changes to each file in log message
 - `git log diff-filter=<F> --stat`: Log diffs with filter (A=Add, D=Delete, M=Modified)
+- `git log -n #`: Show the last # of commits
 
 ## git show
 
@@ -78,6 +79,7 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 
 - `git checkout -- <filename>`: overwrites file changes in working area with staging area version
 - `git checkout <commit> -- <filename>`: copies file at commit to staging area & working area
+- `git checkout -tb <branch>`: Create <branch> off HEAD and use HEAD as upstream
 
 ## git clean
 
