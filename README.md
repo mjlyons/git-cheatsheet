@@ -6,13 +6,19 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 
 - `git config [--global] core.editor "code --wait"`: Set text editor
 - `git config [--global] rerere.enabled true`: Replay previously seen conflict resolution (helpful for long rebases)
+- `git config [--global] branch.<branch>.rebase true`: always rebase branch instead of merging
+- `git config [--global] help.autoCorrect <#>`: auto-correct typos after #/10 seconds
+- `git config [--global] alias.<aliasname> "git <args>"`: Alias a git command
+    * `git config --global alias.lg "log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"`: pretty log (run `git lg`)
 
 ## Commit references
 
 - `<commit>~[n]`: n-th ancestor of commit (n=1 if omitted, n=2 is parent of parent)
 - `<commit>^[n]`: n-th parent of commit (n=1 if omitted, only useful for merges
 
-## git add
+## Git commands
+
+### git add
 
 - `git add -p`: interactively stage commits by hunk
 
@@ -183,3 +189,20 @@ origin git@github.com:username/repo.git (push)
     * If bad: `git bisect bad`
 - `git bisect run <test-cmd> <arguments>`: Automate bisect by providing <test-cmd> to determine pass/fail (pass=retval0)
 	* `git bisect run "grep -c <BAD_TEXT> <FILENAME>" <BAD_SHA> <GOOD_SHA>`: finds which commit added <BAD_TEXT> to <FILENAME>
+
+## git init
+
+- `git init --template=<.git-tempalte path>`: initializes .git with .git settings from <.git-template path> (hooks, set up .gitignore)
+
+## Git Hooks
+
+- executable located in .git/hooks
+- common: .git/hooks/pre-commit, .git/hooks/post-merge, .git/hooks/post-checkout
+- git hook examples:
+    * https://github.com/pre-commit/pre-commit
+    * https://github.com/typicode/husky (javascript focused)
+
+## Misc
+
+- premade .gitignores: https://github.com/github/gitignore
+- `git lint`: https://github.com/sk-/git-lint
