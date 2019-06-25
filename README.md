@@ -36,12 +36,15 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 - `git tag`: list tagnames
 - `git tag --points-at <commit>`: list tagnames that point to a commit
 - `git show <tagname>`: Show message & diff for tag
+- `git push <tagname>`: push <tagname> to remote
+- `git push --tags`: push *all* tags to remote
 
 ## git branch
 
 - `git branch`: list local branches
 - `git branch -r`: list remote branches
 - `git branch <new-branchname> <commit>`: Create a branch with <commit> at HEAD (useful for dangling commits)
+- `git branch -vv`: list branches with upstream and commit msg
 
 ## git merge
 
@@ -80,6 +83,24 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 - `git checkout -- <filename>`: overwrites file changes in working area with staging area version
 - `git checkout <commit> -- <filename>`: copies file at commit to staging area & working area
 - `git checkout -tb <branch>`: Create <branch> off HEAD and use HEAD as upstream
+- `git checkout -t origin/<branch>`: Checkout branch from origin and track origin's version
+
+## git push
+
+- `git push -u origin <branch>`: push HEAD to <branch> on origin
+
+## git cherry
+
+- `git cherry -v`: Show which commits haven't been pushed yet (are local only)
+
+## git fetch
+
+- `git fetch`: get changes without applying any
+
+## git pull
+
+- `git pull`: git fetch && git merge
+- `git pull --rebase`: git fetch && git rebase
 
 ## git clean
 
@@ -115,3 +136,17 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 - `git rebase -i --exec "<cmd>" <commit>`: Runs <cmd> after each commit (useful for unit testing)
 - `git rebase --abort`: Back out a rebase
 - `git branch my_branch_backup` -> `git reset --hard my_branch_backup`: Create a copy of branch before rebasing, restore it later
+
+## git remote
+
+- `git remote -v`: Show remotes
+```
+origin git@github.com:username/repo.git (fetch)
+origin git@github.com:username/repo.git (push)
+```
+- `git remote add upstream https://github.com/ORIG_OWNER/REPO.git`: Add upstream (from fork)
+
+
+## git clone
+
+- `git clone git@github.com:username/repo.git`
