@@ -111,10 +111,12 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 ## git reset
 
 - `git reset --soft <commit>`: moves HEAD to <commit> and stages changes to go back
-- `git reset [--mixed] <commit>`: moves HEAD to <commit> and moves chagnges to go back to working area
+- `git reset [--mixed] <commit>`: moves HEAD to <commit> and moves changes to go back to working area
 - `git reset --hard <commit`: moves HEAD to <commit> and changes to go back disappear (use ORIG_HEAD to get it back)
 - `git reset [commit] -- <file>`: stages change to revert file to state at [commit] or HEAD if not supplied
 - `ORIG_HEAD` pointer to change after doing a reset (handy if need to revert a bad reset)
+- `git reset --merge ORIG_HEAD`: Reset a merge commit (--merge) preserves uncommitted changes
+- `git reflog && git reset --hard HEAD@{#}`: jump back to previous state
 
 ## git revert
 
@@ -147,7 +149,37 @@ origin git@github.com:username/repo.git (push)
 - `git remote rename origin upstream`: Rename origin remote to upstream
 - `git pull --rebase <remote> <branch>`: Pull in changes from <remote>'s <branch>
 
-
 ## git clone
 
 - `git clone git@github.com:username/repo.git`
+
+## git grep
+
+- `git grep -e <regexp>`: Searches tracked files including working area
+- `git grep --cached -e <regexp>`: Only searches staged and commited changes
+- `git grep -e <regexp> -- <file or path>`: limits regex to file/path
+- `git grep --line-number --heading --break -e <regexp>`: Better formatting
+
+## git cherrypick
+
+- `git checkout <branch> && git cherry-pick <SHA>`: Creates commit on <branch> with <SHA>
+
+## git blame
+
+- `git blame <filename>`: show who last touched a file line by line
+- `git blame -w -M -C <filename>`: better format
+	* `-w`: ignore whitespace
+	* `-M`: follow moved/copied lines *within* file
+	* `-C`: follow moved/copied lines *outside* file
+- `git log -diff-filter=D -- <deleted_file>`: See what commit(s) deleted a file
+    * `git blame <commit>^ -- <deleted_file>`: Blame on file before it was deleted
+- `git blame -L#,# -- <file>`: Limit blame for lines #-# 
+- `git blame -L'/<regexp>/' <file>`: Limit blame to lines matching regexp
+
+## git bisect
+
+- `git bisect start <BAD_SHA> <GOOD_SHA>`: Find which commit broke something
+    * If good: `git bisect good`
+    * If bad: `git bisect bad`
+- `git bisect run <test-cmd> <arguments>`: Automate bisect by providing <test-cmd> to determine pass/fail (pass=retval0)
+	* `git bisect run "grep -c <BAD_TEXT> <FILENAME>" <BAD_SHA> <GOOD_SHA>`: finds which commit added <BAD_TEXT> to <FILENAME>
