@@ -37,7 +37,6 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 - `git tag --points-at <commit>`: list tagnames that point to a commit
 - `git show <tagname>`: Show message & diff for tag
 - `git push <tagname>`: push <tagname> to remote
-- `git push --tags`: push *all* tags to remote
 
 ## git branch
 
@@ -145,6 +144,8 @@ origin git@github.com:username/repo.git (fetch)
 origin git@github.com:username/repo.git (push)
 ```
 - `git remote add upstream https://github.com/ORIG_OWNER/REPO.git`: Add upstream (from fork)
+- `git remote rename origin upstream`: Rename origin remote to upstream
+- `git pull --rebase <remote> <branch>`: Pull in changes from <remote>'s <branch>
 
 
 ## git clone
