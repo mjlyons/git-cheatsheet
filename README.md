@@ -7,6 +7,11 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 - `git config [--global] core.editor "code --wait"`: Set text editor
 - `git config [--global] rerere.enabled true`: Replay previously seen conflict resolution (helpful for long rebases)
 
+## Commit references
+
+- `<commit>~[n]`: n-th ancestor of commit (n=1 if omitted, n=2 is parent of parent)
+- `<commit>^[n]`: n-th parent of commit (n=1 if omitted, only useful for merges
+
 ## git add
 
 - `git add -p`: interactively stage commits by hunk
@@ -93,8 +98,18 @@ Based on notes from [Advanced Git](https://github.com/nnja/advanced-git/blob/mas
 
 - `git revert <commit>`: creates a commit reverting <commit>
 
-## Commit references
+## git rebase
 
-- `<commit>~[n]`: n-th ancestor of commit (n=1 if omitted, n=2 is parent of parent)
-- `<commit>^[n]`: n-th parent of commit (n=1 if omitted, only useful for merges
-
+- `git rebase <branch>`: Rebase current branch on top of <commit>
+- `git rebase -i <branch>`: interactive rebase
+	* `pick`: keep this commit
+	* `reword`: keep commit but reword message
+	* `edit`: keep but modify commit
+	* `squash`: combine commit with previous, edit message
+	* `fixup`: combine commit with previous and keep previous message
+	* `exec`: run command with previous commit
+	* `drop`: remove this commit
+- `git commit --fixup <SHA> && git rebase -i --autosquash <SHA>^`: makes new commit a "fixup!" of <SHA> and squashes fixup into <SHA>
+- `git rebase -i --exec "<cmd>" <commit>`: Runs <cmd> after each commit (useful for unit testing)
+- `git rebase --abort`: Back out a rebase
+- `git branch my_branch_backup` -> `git reset --hard my_branch_backup`: Create a copy of branch before rebasing, restore it later
